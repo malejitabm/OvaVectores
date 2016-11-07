@@ -151,6 +151,7 @@
 }</code>
 		</pre>
 	</div>
+	
 	<div id="perfil" class="hidden-content">
 		<p class="home-text">Perfil del usuario en construcción</p>
 	</div>
