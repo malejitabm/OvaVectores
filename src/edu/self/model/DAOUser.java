@@ -22,7 +22,7 @@ public class DAOUser {
 		return false;
 	}
 	
-	public DTOUser searchUser(String username,String password){
+	public DTOUser search(String username,String password){
 		DTOUser user = null;
 		try{
 			ps = Connection.getConnection().prepareStatement("select * from User");
