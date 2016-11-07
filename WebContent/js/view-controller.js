@@ -24,12 +24,13 @@ function enableSubItem(number){
     var elements = document.getElementsByClassName('hidden-menu');
     for(var i = 0;i<elements.length;i++){
         if(i == (number-1)){
-            if(elements[i].style.display == 'none'){
+            if(elements[i].style.display == 'none' || elements[i].style.display == ''){
+            	console.log("Entre por none");
                 elements[i].style.display='inline';
             }else{
+            	console.log("Entre por el otro");
                 elements[i].style.display='none';
             }
-            
         }else{
             elements[i].style.display='none';
         }
