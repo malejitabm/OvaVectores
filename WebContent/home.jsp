@@ -138,13 +138,13 @@
 		<p class="home-text">Evaluación final en construcción</p>
 	</div>
 
-	<div id="contenido-teorico" class="hidden-content">
+	<div id="theory" class="hidden-content">
 		<video id="video-content" width="640px" height="480px" controls>
 			<source src="video/ini-vectores.mp4" type="video/mp4" />
 			<p class="home-text">La reproducción de video no se encuentra disponible en tu navegador</p>
 		</video>
 	</div>
-	<div id="cuestionario" class="hidden-content">
+	<div id="questions" class="hidden-content">
 		<pre>
 <code class="java">public static void main(String[] args){
 	System.out.println("Hello World using Highlight.js!!!");
@@ -152,7 +152,7 @@
 		</pre>
 	</div>
 	
-	<div id="perfil" class="hidden-content">
+	<div id="profile" class="hidden-content">
 		<p class="home-text">Perfil del usuario en construcción</p>
 	</div>
 	<script src="js/view-controller.js"></script>

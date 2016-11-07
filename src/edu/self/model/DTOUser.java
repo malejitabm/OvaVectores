@@ -1,5 +1,5 @@
 package edu.self.model;
 
-public class UsuarioDTO {
+public class DTOUser {
 
 }
