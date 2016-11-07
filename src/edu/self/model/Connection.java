@@ -8,10 +8,18 @@ public class Connection implements Provider{
 	public static java.sql.Connection getConnection(){
 		if(instance == null){
 			try{
-				Class.forName(className);
-				instance = DriverManager.getConnection(connURL, username, password);
-			}catch(ClassNotFoundException | SQLException e){
-				System.err.println("Can't establish the connection : "+e);
+				Class.forName("com.mysql.jdbc.Driver");
+				
+			}catch(ClassNotFoundException e){
+				System.out.println("Where is your MySQL JDBC Driver?");
+				e.printStackTrace();
+			}
+			
+			try{
+				instance = DriverManager.getConnection("jdbc:mysql://sandbox2.ufps.edu.co:3306/ufps_88", "ufps_88", "ufps_uy");
+			}catch(SQLException e){
+				System.out.println("Connection Failed! Check output console");
+				e.printStackTrace();
 			}
 			
 		}
