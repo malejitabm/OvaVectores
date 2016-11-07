@@ -9,19 +9,10 @@ public class Connection implements Provider{
 		if(instance == null){
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
-				
-			}catch(ClassNotFoundException e){
-				System.out.println("Where is your MySQL JDBC Driver?");
-				e.printStackTrace();
-			}
-			
-			try{
 				instance = DriverManager.getConnection("jdbc:mysql://sandbox2.ufps.edu.co:3306/ufps_88", "ufps_88", "ufps_uy");
-			}catch(SQLException e){
-				System.out.println("Connection Failed! Check output console");
-				e.printStackTrace();
+			}catch(ClassNotFoundException | SQLException e){
+				System.out.println("Can't establish the connection: "+e);
 			}
-			
 		}
 		return instance;
 	}

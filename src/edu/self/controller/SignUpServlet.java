@@ -21,15 +21,25 @@ public class SignUpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOUser dao = new DAOUser();
-		DTOUser user = new DTOUser(request.getParameter("username"),request.getParameter("email"),request.getParameter("password"));
-		if(dao.insert(user)){
-			request.getSession().setAttribute("user", user);
-			response.sendRedirect("home.jsp");
-			return;
+		if(validatePassword(request.getParameter("password1"),request.getParameter("password2"))){
+			DTOUser user = new DTOUser(request.getParameter("username"),request.getParameter("email"),request.getParameter("password1"));
+			if(dao.insert(user)){
+				request.getSession().setAttribute("user", user);
+				response.sendRedirect("home.jsp");
+				return;
+			}else{
+				response.sendRedirect("register.jsp");
+				return;
+			}
 		}else{
 			response.sendRedirect("register.jsp");
 			return;
 		}
+		
+	}
+	
+	private boolean validatePassword(String password1,String password2){
+		return (password1.equals(password2));
 	}
 
 }

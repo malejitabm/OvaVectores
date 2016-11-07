@@ -17,20 +17,19 @@
 		</header>
 		<div class="register-form cloud-background">
 			<h1 class="register-title">Regístrate</h1>
-			<form action="home.jsp" method="post">
+			<form action="signup" method="post">
 				<div class="center asbestos-text">
 					<input class="register-field" type="text"
-						placeholder="Nombre de Usuario" />
+						placeholder="Nombre de Usuario" name="username"/>
 				</div>
 				<div class="center asbestos-text">
-					<input class="register-field" type="text" placeholder="Correo" />
+					<input class="register-field" type="text" placeholder="Correo" name="email"/>
 				</div>
 				<div class="center asbestos-text">
-					<input class="register-field" type="text" placeholder="Contraseña" />
+					<input class="register-field" type="text" placeholder="Contraseña" name="password1"/>
 				</div>
 				<div class="center password asbestos-text">
-					<input class="register-field" type="text"
-						placeholder="Confirmar Contraseña" />
+					<input class="register-field" type="text" placeholder="Confirmar Contraseña" name="password2"/>
 				</div>
 				<div class="center">
 					<button class="login-button" type="submit" value="Registrar">Registrar</button>

@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+	<%
+		if(session.getAttribute("user") != null){
+			response.sendRedirect("home.jsp");
+			return;
+		}
+	%>
 	<div class="wrap">
 		<header class="header grey-background">
 			<img class="header-img" width="103" height="60"
