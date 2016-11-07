@@ -134,7 +134,7 @@
 		</ol>
 	</div>
 
-	<div id="eva-final" class="hidden-content">
+	<div id="final-exam" class="hidden-content">
 		<p class="home-text">Evaluación final en construcción</p>
 	</div>
 
