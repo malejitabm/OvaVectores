@@ -21,7 +21,7 @@ public class SignUpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOUser dao = new DAOUser();
-		if(validatePassword(request.getParameter("password1"),request.getParameter("password2"))){
+		if(validateFields(request.getParameter("username"),request.getParameter("email"),request.getParameter("password1"),request.getParameter("password2")) && validatePassword(request.getParameter("password1"),request.getParameter("password2"))){
 			DTOUser user = new DTOUser(request.getParameter("username"),request.getParameter("email"),request.getParameter("password1"));
 			if(dao.insert(user)){
 				request.getSession().setAttribute("user", user);
@@ -37,7 +37,9 @@ public class SignUpServlet extends HttpServlet {
 		}
 		
 	}
-	
+	private boolean validateFields(String username,String email,String password1,String password2){
+		return (!username.equals("") && !email.equals("") && !password1.equals("") && !password2.equals(""));
+	}
 	private boolean validatePassword(String password1,String password2){
 		return (password1.equals(password2));
 	}

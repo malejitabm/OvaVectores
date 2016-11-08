@@ -26,10 +26,10 @@
 					<input class="register-field" type="text" placeholder="Correo" name="email"/>
 				</div>
 				<div class="center asbestos-text">
-					<input class="register-field" type="text" placeholder="Contraseña" name="password1"/>
+					<input class="register-field" type="password" placeholder="Contraseña" name="password1"/>
 				</div>
 				<div class="center password asbestos-text">
-					<input class="register-field" type="text" placeholder="Confirmar Contraseña" name="password2"/>
+					<input class="register-field" type="password" placeholder="Confirmar Contraseña" name="password2"/>
 				</div>
 				<div class="center">
 					<button class="login-button" type="submit" value="Registrar">Registrar</button>

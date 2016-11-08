@@ -1,3 +1,4 @@
+<%@ page import="edu.self.model.DTOUser" %>
 <!DOCTYPE html>
 <html>
 
@@ -10,8 +11,17 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/androidstudio.css"/>
 </head>
-
+<% 
+	DTOUser user;
+%>
 <body>
+	<%
+		if(session.getAttribute("user") == null){
+			response.sendRedirect("index.jsp");
+			return;
+		}
+		user = (DTOUser)session.getAttribute("user");
+	%>
 	<div class="nav-bar grey-background">
 		<div class="nav-bar-header">
 			<img class="header-img" width="103" height="60"
@@ -21,7 +31,7 @@
 			<a href="" onclick="return enableContent(6);"><img width="64px"
 				height="64px" src="img/user.png"></a>
 			<p>
-				Nombre de Usuario
+				Bienvenido,<br><%=user.getUsername()%>
 			</p>
 		</div>
 		<ul>
@@ -68,7 +78,7 @@
 				href="">Repositorio</a></li>
 			<li><a class="item" onclick="return enableContent(3);" href="">Evaluación
 					final</a></li>
-			<li><a class="item" href="index.jsp">Salir<img width="16px"
+			<li><a class="item" href="removeSession.jsp">Salir<img width="16px"
 					height="16px" src="img/logout.png" /></a></li>
 		</ul>
 	</div>
