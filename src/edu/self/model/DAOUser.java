@@ -1,6 +1,5 @@
 package edu.self.model;
 import java.sql.*;
-import edu.self.business.*;
 public class DAOUser {
 	private PreparedStatement ps;
 	private ResultSet rs;
