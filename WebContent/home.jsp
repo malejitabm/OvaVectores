@@ -31,7 +31,7 @@
 			<a href="" onclick="return enableContent(6);"><img width="64px"
 				height="64px" src="img/user.png"></a>
 			<p>
-				Bienvenido,<br><%=user.getUsername()%>
+				Bienvenido,<br><%=user.getName()%>
 			</p>
 		</div>
 		<ul>
