@@ -18,10 +18,10 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
+		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		DAOUser dao = new DAOUser();
-		DTOUser user = dao.search(username, password);
+		DTOUser user = dao.search(id, password);
 		if(user != null){
 			request.getSession().setAttribute("user", user);
 			response.sendRedirect("home.jsp");

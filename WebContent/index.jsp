@@ -24,7 +24,7 @@
 			<h1 class="register-title">Bienvenido</h1>
 			<form action="login" method="post">
 				<div class="center asbestos-text">
-					<input class="register-field" type="text" placeholder="Usuario" name="username" />
+					<input class="register-field" type="text" placeholder="Código" name="id" />
 				</div>
 				<div class="center asbestos-text">
 					<input class="login-field" type="password" placeholder="Contraseña" name="password"/>

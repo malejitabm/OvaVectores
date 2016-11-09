@@ -21,8 +21,8 @@ public class SignUpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOUser dao = new DAOUser();
-		if(validateFields(request.getParameter("username"),request.getParameter("email"),request.getParameter("password1"),request.getParameter("password2")) && validatePassword(request.getParameter("password1"),request.getParameter("password2"))){
-			DTOUser user = new DTOUser(request.getParameter("username"),request.getParameter("email"),request.getParameter("password1"));
+		if(validateFields(request.getParameter("id"),request.getParameter("name"),request.getParameter("password1"),request.getParameter("password2")) && validatePassword(request.getParameter("password1"),request.getParameter("password2"))){
+			DTOUser user = new DTOUser(request.getParameter("id"),request.getParameter("name"),request.getParameter("password1"),2);
 			if(dao.insert(user)){
 				request.getSession().setAttribute("user", user);
 				response.sendRedirect("home.jsp");
@@ -37,8 +37,8 @@ public class SignUpServlet extends HttpServlet {
 		}
 		
 	}
-	private boolean validateFields(String username,String email,String password1,String password2){
-		return (!username.equals("") && !email.equals("") && !password1.equals("") && !password2.equals(""));
+	private boolean validateFields(String id,String name,String password1,String password2){
+		return (!id.equals("") && !name.equals("") && !password1.equals("") && !password2.equals(""));
 	}
 	private boolean validatePassword(String password1,String password2){
 		return (password1.equals(password2));

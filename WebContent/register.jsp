@@ -13,17 +13,16 @@
 		<header class="header grey-background">
 			<img class="header-img" width="103" height="60"
 				src="img/vectores-logo.png">
-			<!--<img class="sistemas-img" width="66" height="60" src="img/logo-ingsistemas.png">-->
 		</header>
 		<div class="register-form cloud-background">
 			<h1 class="register-title">Regístrate</h1>
 			<form action="signup" method="post">
 				<div class="center asbestos-text">
 					<input class="register-field" type="text"
-						placeholder="Nombre de Usuario" name="username"/>
+						placeholder="Código" name="id"/>
 				</div>
 				<div class="center asbestos-text">
-					<input class="register-field" type="text" placeholder="Correo" name="email"/>
+					<input class="register-field" type="text" placeholder="Nombre" name="name"/>
 				</div>
 				<div class="center asbestos-text">
 					<input class="register-field" type="password" placeholder="Contraseña" name="password1"/>
