@@ -1,14 +1,4 @@
-function enableRepo(){
-    var repository = document.getElementsByClassName('repository');
-    repository[0].style.display = 'inline-block';
-    return false;
-}
 
-function enableHome(){
-    var repository = document.getElementsByClassName('home');
-    repository[0].style.display = 'inline-block';
-    return false;
-}
 function enableContent(number){
     var elements = document.getElementsByClassName('hidden-content');
     for(var i = 0;i<elements.length;i++){
@@ -25,10 +15,8 @@ function enableSubItem(number){
     for(var i = 0;i<elements.length;i++){
         if(i == (number-1)){
             if(elements[i].style.display == 'none' || elements[i].style.display == ''){
-            	console.log("Entre por none");
                 elements[i].style.display='inline';
             }else{
-            	console.log("Entre por el otro");
                 elements[i].style.display='none';
             }
         }else{
@@ -36,4 +24,14 @@ function enableSubItem(number){
         }
     }
     return false;
+}
+
+function retrieveData(){
+	var xhttp;
+	if(window.XMLHttpRequest){
+		xhttp = new XMLHttpRequest();
+	}else{
+		//Code for IE5, IE6
+		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
 }
