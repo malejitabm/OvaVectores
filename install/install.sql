@@ -1,8 +1,9 @@
 /*User table creation*/
 create table Usuario(
-    id int auto_increment,
+    id varchar(7),
     nombre varchar(30) not null,
-    descripcion varchar(40) not null,
+    contrasena varchar(40) not null,
+    tipo int not null,
     primary key(id)
 );
 
