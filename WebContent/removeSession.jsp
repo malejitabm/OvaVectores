@@ -3,7 +3,7 @@
 <%
 	if(session.getAttribute("user") != null){
 		session.removeAttribute("user");
-		response.sendRedirect("index.jsp");
-		return;
 	}
+	response.sendRedirect("index.jsp");
+	return;
 %>

@@ -17,12 +17,6 @@ html, body {
     left:20px;
     transform:translate(0,-50%);
 }
-.sistemas-img{
-    position:absolute;
-    top:50%;
-    left:98%;
-    transform:translate(-100%,-50%);
-}
 .header-text{
     margin:0;
     position:absolute;
@@ -110,6 +104,9 @@ html, body {
 }
 .center{
     text-align:center;
+}
+.justify{
+	text-align:justify;
 }
 .circle{
     position:relative;
@@ -288,6 +285,11 @@ html, body {
     text-align:center;
     padding:20px;
     margin-bottom:40px;
+}
+.content-title{
+	color:#58ACFA;
+	font-size:24px;
+	font-weight:medium;
 }
 .login{
     width:400px;

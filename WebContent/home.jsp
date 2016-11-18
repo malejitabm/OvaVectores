@@ -84,8 +84,21 @@
 	</div>
 	<div class="filler"></div>
 
-	<div id="home" class="hidden-content">
-		<p class="home-text">Contenido de inicio en construcción</p>
+	<div id="home" class="hidden-content center">
+		<br>
+		<br>
+		<br>
+		<h1 class="content-title center">Introducción, Conceptos Básicos.</h1>
+		<br>
+		<p class="justify">Es importante como estudiantes de ingeniería desarrollar la
+			capacidad de abstracción de problemas y aplicar soluciones lógicas a
+			ellos, por ello el siguiente contenido proporcionará conceptos
+			básicos a tener en cuenta para desarrollar el siguiente curso sobre
+			Vectores y Matrices.</p>
+		<br>
+		<iframe width="470" height="402"
+			src="http://edpuzzle.com/embed/media/582a8f7774b4fef43e81229f"
+			frameborder="0" allowfullscreen></iframe>
 	</div>
 
 	<div id="repository" class="hidden-content">

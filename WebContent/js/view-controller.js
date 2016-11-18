@@ -35,3 +35,5 @@ function retrieveData(){
 		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 }
+
+enableContent(1);
