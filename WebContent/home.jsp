@@ -23,6 +23,7 @@
 		user = (DTOUser)session.getAttribute("user");
 	%>
 	<div class="nav-bar grey-background">
+
 		<div class="nav-bar-header">
 			<img class="header-img" width="103" height="60"
 				src="img/vectores-logo.png">
@@ -82,7 +83,9 @@
 					height="16px" src="img/logout.png" /></a></li>
 		</ul>
 	</div>
-	<div class="filler"></div>
+	<div class="filler">
+		
+	</div>
 
 	<div id="home" class="hidden-content center">
 		<br>
