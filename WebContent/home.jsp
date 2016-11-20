@@ -102,13 +102,14 @@
 	</div>
 
 	<div id="repository" class="hidden-content">
-		<h3 style="font-weight: lighter; margin-bottom: 30px;">Repositorio
-			de Ejercicios</h3>
+		<h1 class="content-title center">Repositorio
+			de Ejercicios</h1>
+			<br>
 		<ol class="repo-list">
 			<li class="repo-item">
 				<p>Validar si una matriz es una matriz identidad. es una matriz
 					cuadrada que tiene solamente 1s en la diagonal principal, y 0s por
-					todas partes.</p>
+					todas partes.</p><img src="img/matriz_identidad.png">
 
 			</li>
 			<li class="repo-item">
@@ -127,7 +128,7 @@
 					cuadrado mágico de orden impar n, comprendido entre 3 y 11. El
 					usuario debe elegir el valor de n. Un cuadrado mágico se compone de
 					números enteros comprendidos entre 1 y n. La suma de los números
-					que figuran en cada fila, columna y diagonal son iguales.</p>
+					que figuran en cada fila, columna y diagonal son iguales.</p><img src="img/cuadro_magico.jpg" width=178 height=180>
 			</li>
 			<li class="repo-item">
 				<p>Escribir el algoritmo que permita obtener el número de
