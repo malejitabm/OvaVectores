@@ -175,11 +175,14 @@
 		</div>
 		
 		<div id="questions" class="hidden-content">
+		<!--
 			<pre>
 <code class="java">public static void main(String[] args){
 	System.out.println("Hello World using Highlight.js!!!");
 }</code>
 		</pre>
+		-->
+		<p class="home-text">Cuestionario en construcción</p>
 		</div>
 
 		<div id="profile" class="hidden-content">

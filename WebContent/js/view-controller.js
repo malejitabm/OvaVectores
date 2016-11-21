@@ -1,5 +1,6 @@
 
 function enableContent(number){
+	disableVideoContent()
     var elements = document.getElementsByClassName('hidden-content');
     for(var i = 0;i<elements.length;i++){
         if(i == (number-1)){
@@ -36,8 +37,8 @@ function retrieveVideoContent(videoId){
 	}
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
-			sendVideoSource(this);
 			enableContent(4);
+			sendVideoSource(this);
 		}
 	};
 	
@@ -51,7 +52,11 @@ function sendVideoSource(response){
 	var video;
 	console.log(response.responseText);
 	video = "<video id='video-content' width='640px' height='480px' controls><source src="+"\""+filename+"\""+" type=\"video/mp4\"/></video>";
+	disableVideoContent();
 	document.getElementById('theory').innerHTML = video;
+}
+function disableVideoContent(){
+	document.getElementById('theory').innerHTML = "";
 }
 
 enableContent(1);
