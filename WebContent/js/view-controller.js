@@ -26,7 +26,11 @@ function enableSubItem(number){
     }
     return false;
 }
-
+function enableHomeContent(){
+	enableContent(1);
+	document.getElementById('home-video-content').innerHTML = "<iframe width='470' height='402' src=\"http://edpuzzle.com/embed/media/582a8f7774b4fef43e81229f\" frameborder='0' allowfullscreen></iframe>";
+	return false;
+}
 function retrieveVideoContent(videoId){
 	var xhttp;
 	if(window.XMLHttpRequest){
@@ -56,7 +60,8 @@ function sendVideoSource(response){
 	document.getElementById('theory').innerHTML = video;
 }
 function disableVideoContent(){
+	document.getElementById('home-video-content').innerHTML = "";
 	document.getElementById('theory').innerHTML = "";
 }
 
-enableContent(1);
+enableHomeContent();

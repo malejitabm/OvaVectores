@@ -36,7 +36,7 @@
 			</p>
 		</div>
 		<ul>
-			<li><a class="item" href="" onclick="return enableContent(1);">Inicio</a>
+			<li><a class="item" href="" onclick="return enableHomeContent();">Inicio</a>
 			</li>
 			
 			<li><a class="item" href="" onclick="return enableSubItem(1);">Inicialización</a>
@@ -97,15 +97,9 @@
 				proporcionará conceptos básicos a tener en cuenta para desarrollar
 				el siguiente curso sobre Vectores y Matrices.</p>
 			<br>
-			<!--
-			<iframe width="470" height="402"
-				src="http://edpuzzle.com/embed/media/582a8f7774b4fef43e81229f"
-				frameborder="0" allowfullscreen></iframe>-->
-			<video id="video-content" width="640px" height="480px" controls>
-				<source src="video/Inicializacion.mp4" type="video/mp4" />
-				<p class="home-text">La reproducción de video no se encuentra
-					disponible en tu navegador</p>
-			</video>
+			<div id ="home-video-content">
+				
+			</div>
 		</div>
 
 		<div id="repository" class="hidden-content">
