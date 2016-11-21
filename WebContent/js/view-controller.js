@@ -26,7 +26,7 @@ function enableSubItem(number){
     return false;
 }
 
-function retrieveData(){
+function retrieveVideoContent(videoId){
 	var xhttp;
 	if(window.XMLHttpRequest){
 		xhttp = new XMLHttpRequest();
@@ -34,6 +34,24 @@ function retrieveData(){
 		//Code for IE5, IE6
 		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			sendVideoSource(this);
+			enableContent(4);
+		}
+	};
+	
+	xhttp.open("GET","videoloader?videoId="+videoId,true);
+	xhttp.send();
+	return false;
+}
+
+function sendVideoSource(response){
+	var filename = response.responseText;
+	var video;
+	console.log(response.responseText);
+	video = "<video id='video-content' width='640px' height='480px' controls><source src="+"\""+filename+"\""+" type=\"video/mp4\"/></video>";
+	document.getElementById('theory').innerHTML = video;
 }
 
 enableContent(1);

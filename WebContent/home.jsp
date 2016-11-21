@@ -42,21 +42,21 @@
 			<li><a class="item" href="" onclick="return enableSubItem(1);">Inicialización</a>
 				<ul class="hidden-menu">
 					<li><a class="subitem" href=""
-						onclick="return enableContent(4);">Contenido Teórico</a></li>
+						onclick="return retrieveVideoContent(1);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
 						onclick="return enableContent(5);">Cuestionario</a></li>
 				</ul></li>
 			<li><a class="item" href="" onclick="return enableSubItem(2);">Recorrido</a>
 				<ul class="hidden-menu">
 					<li><a class="subitem" href=""
-						onclick="return enableContent(4);">Contenido Teórico</a></li>
+						onclick="return retrieveVideoContent(2);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
 						onclick="return enableContent(5);">Cuestionario</a></li>
 				</ul></li>
 			<li><a class="item" href="" onclick="return enableSubItem(3);">Asignación</a>
 				<ul class="hidden-menu">
 					<li><a class="subitem" href=""
-						onclick="return enableContent(4);">Contenido Teórico</a></li>
+						onclick="return retrieveVideoContent(3);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
 						onclick="return enableContent(5);">Cuestionario</a></li>
 				</ul></li>
@@ -64,7 +64,7 @@
 					de elementos</a>
 				<ul class="hidden-menu">
 					<li><a class="subitem" href=""
-						onclick="return enableContent(4);">Contenido Teórico</a></li>
+						onclick="return retrieveVideoContent(4);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
 						onclick="return enableContent(5);">Cuestionario</a></li>
 				</ul></li>
@@ -72,7 +72,7 @@
 					de ordenamiento</a>
 				<ul class="hidden-menu">
 					<li><a class="subitem" href=""
-						onclick="return enableContent(4);">Contenido Teórico</a></li>
+						onclick="return retrieveVideoContent(5);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
 						onclick="return enableContent(5);">Cuestionario</a></li>
 				</ul></li>
@@ -97,9 +97,15 @@
 				proporcionará conceptos básicos a tener en cuenta para desarrollar
 				el siguiente curso sobre Vectores y Matrices.</p>
 			<br>
+			<!--
 			<iframe width="470" height="402"
 				src="http://edpuzzle.com/embed/media/582a8f7774b4fef43e81229f"
-				frameborder="0" allowfullscreen></iframe>
+				frameborder="0" allowfullscreen></iframe>-->
+			<video id="video-content" width="640px" height="480px" controls>
+				<source src="video/Inicializacion.mp4" type="video/mp4" />
+				<p class="home-text">La reproducción de video no se encuentra
+					disponible en tu navegador</p>
+			</video>
 		</div>
 
 		<div id="repository" class="hidden-content">
@@ -165,12 +171,9 @@
 		</div>
 
 		<div id="theory" class="hidden-content">
-			<video id="video-content" width="640px" height="480px" controls>
-				<source src="video/ini-vectores.mp4" type="video/mp4" />
-				<p class="home-text">La reproducción de video no se encuentra
-					disponible en tu navegador</p>
-			</video>
+			<!--  Here is going to render the video content of the platform -->
 		</div>
+		
 		<div id="questions" class="hidden-content">
 			<pre>
 <code class="java">public static void main(String[] args){
