@@ -1,5 +1,7 @@
 package edu.self.model;
 import java.sql.*;
+
+import edu.self.util.Security;
 public class DAOUser {
 	private PreparedStatement ps;
 	private ResultSet rs;
@@ -9,7 +11,7 @@ public class DAOUser {
 			ps = Connection.getConnection().prepareStatement("insert into Usuario values(?,?,?,?)");
 			ps.setString(1, user.getId());
 			ps.setString(2, user.getName());
-			ps.setString(3, user.getPassword());
+			ps.setString(3, Security.getMd5(user.getPassword()));
 			ps.setInt(4, user.getType());
 			int result = ps.executeUpdate();
 			if(result >= 1){
@@ -29,7 +31,7 @@ public class DAOUser {
 			ps = Connection.getConnection().prepareStatement("select * from Usuario");
 			rs = ps.executeQuery();
 			while(rs.next()){
-				if(rs.getString("id").equals(id) && rs.getString("contrasena").equals(password)){
+				if(rs.getString("id").equals(id) && rs.getString("contrasena").equals(Security.getMd5(password))){
 					user = new DTOUser(rs.getString("id"),rs.getString("nombre"),rs.getString("contrasena"),rs.getInt("tipo"));
 				}
 			}
