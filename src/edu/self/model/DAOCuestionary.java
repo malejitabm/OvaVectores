@@ -5,13 +5,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.*;
 
-public class DAOSurvey {
+public class DAOCuestionary {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
 	
-	public DTOSurvey searchSurvey(int idSubTopic){
-		DTOSurvey survey = null;
+	public DTOCuestionary searchSurvey(int idSubTopic){
+		DTOCuestionary survey = null;
 		ArrayList<DTOQuestion> questions;
 		ArrayList<DTOOption> options;
 		ResultSet resultSet1,resultSet2;
@@ -37,7 +37,7 @@ public class DAOSurvey {
 					}
 					questions.add(new DTOQuestion(resultSet1.getInt("id"),resultSet1.getString("descripcion"),options));
 				}
-				survey = new DTOSurvey(rs.getInt("id"),rs.getString("nombre"),rs.getString("descripcion"),rs.getInt("subtema"),questions);
+				survey = new DTOCuestionary(rs.getInt("id"),rs.getString("nombre"),rs.getString("descripcion"),rs.getInt("subtema"),questions);
 			}
 		}catch(SQLException e){
 			System.err.println("Can't execute the search query: "+e);

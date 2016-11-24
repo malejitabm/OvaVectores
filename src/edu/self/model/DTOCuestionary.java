@@ -2,14 +2,14 @@ package edu.self.model;
 
 import java.util.ArrayList;
 
-public class DTOSurvey {
+public class DTOCuestionary {
 	private int id;
 	private String name;
 	private String description;
 	private int subtopic;
 	private ArrayList<DTOQuestion> questions;
 	
-	public DTOSurvey(int id,String name,String description,int subtopic,ArrayList<DTOQuestion> questions){
+	public DTOCuestionary(int id,String name,String description,int subtopic,ArrayList<DTOQuestion> questions){
 		this.id = id;
 		this.name = name;
 		this.description = description;
