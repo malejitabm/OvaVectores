@@ -10,7 +10,7 @@ public class DAOCuestionary {
 	private ResultSet rs;
 	
 	
-	public DTOCuestionary searchSurvey(int idSubTopic){
+	public DTOCuestionary searchCuestionary(int idSubTopic){
 		DTOCuestionary survey = null;
 		ArrayList<DTOQuestion> questions;
 		ArrayList<DTOOption> options;
@@ -35,7 +35,7 @@ public class DAOCuestionary {
 					while(resultSet2.next()){
 						options.add(new DTOOption(resultSet2.getInt("id"),resultSet2.getString("descripcion"),resultSet2.getInt("pregunta")));
 					}
-					questions.add(new DTOQuestion(resultSet1.getInt("id"),resultSet1.getString("descripcion"),options));
+					questions.add(new DTOQuestion(resultSet1.getInt("id"),resultSet1.getString("descripcion"),resultSet1.getInt("cuestionario"),options));
 				}
 				survey = new DTOCuestionary(rs.getInt("id"),rs.getString("nombre"),rs.getString("descripcion"),rs.getInt("subtema"),questions);
 			}
