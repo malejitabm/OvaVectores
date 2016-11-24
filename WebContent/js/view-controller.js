@@ -64,4 +64,29 @@ function disableVideoContent(){
 	document.getElementById('theory').innerHTML = "";
 }
 
+function retrieveCuestionary(subtopic){
+	var xhttp;
+	if(window.XMLHttpRequest){
+		xhttp = new XMLHttpRequest();
+	}else{
+		//Code for IE5, IE6
+		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			enableContent(5);
+			enableCuestionary(this);
+		}
+	};
+	
+	xhttp.open("GET","cuestionary?subtopic="+subtopic,true);
+	xhttp.send();
+	return false;
+}
+
+function enableCuestionary(json){
+	var json = JSON.parse(json.responseText);
+	console.log(json.questions.length);
+}
+
 enableHomeContent();

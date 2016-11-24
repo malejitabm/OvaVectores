@@ -44,21 +44,21 @@
 					<li><a class="subitem" href=""
 						onclick="return retrieveVideoContent(1);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
-						onclick="return enableContent(5);">Cuestionario</a></li>
+						onclick="return retrieveCuestionary(1);">Cuestionario</a></li>
 				</ul></li>
 			<li><a class="item" href="" onclick="return enableSubItem(2);">Recorrido</a>
 				<ul class="hidden-menu">
 					<li><a class="subitem" href=""
 						onclick="return retrieveVideoContent(2);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
-						onclick="return enableContent(5);">Cuestionario</a></li>
+						onclick="return retrieveCuestionary(3);">Cuestionario</a></li>
 				</ul></li>
 			<li><a class="item" href="" onclick="return enableSubItem(3);">Asignación</a>
 				<ul class="hidden-menu">
 					<li><a class="subitem" href=""
 						onclick="return retrieveVideoContent(3);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
-						onclick="return enableContent(5);">Cuestionario</a></li>
+						onclick="return retrieveCuestionary(2);">Cuestionario</a></li>
 				</ul></li>
 			<li><a class="item" href="" onclick="return enableSubItem(4);">Busqueda
 					de elementos</a>
@@ -66,7 +66,7 @@
 					<li><a class="subitem" href=""
 						onclick="return retrieveVideoContent(4);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
-						onclick="return enableContent(5);">Cuestionario</a></li>
+						onclick="return retrieveCuestionary(4);">Cuestionario</a></li>
 				</ul></li>
 			<li><a class="item" href="" onclick="return enableSubItem(5);">Algoritmos
 					de ordenamiento</a>
@@ -74,7 +74,7 @@
 					<li><a class="subitem" href=""
 						onclick="return retrieveVideoContent(5);">Contenido Teórico</a></li>
 					<li><a class="subitem" href=""
-						onclick="return enableContent(5);">Cuestionario</a></li>
+						onclick="return retrieveCuestionary(5);">Cuestionario</a></li>
 				</ul></li>
 			<li><a id="repo" class="item" onclick="return enableContent(2);"
 				href="">Repositorio</a></li>
@@ -177,6 +177,8 @@
 		</pre>
 		-->
 		<p class="home-text">Cuestionario en construcción</p>
+		
+		
 		</div>
 
 		<div id="profile" class="hidden-content">
