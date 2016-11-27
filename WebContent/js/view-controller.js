@@ -26,6 +26,7 @@ function enableSubItem(number){
     }
     return false;
 }
+
 function enableHomeContent(){
 	enableContent(1);
 	document.getElementById('home-video-content').innerHTML = "<iframe width='470' height='402' src=\"http://edpuzzle.com/embed/media/582a8f7774b4fef43e81229f\" frameborder='0' allowfullscreen></iframe>";
@@ -88,7 +89,7 @@ function enableCuestionary(json){
 	var json = JSON.parse(json.responseText);
 	var i,j;
 	
-	var cuestionary = "<form action='' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Cuestionario: " + json.name + "</h1></div><br><div class='center'><p>"+json.description+"</p></div><br>"
+	var cuestionary = "<form action='cuestionary' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Cuestionario: " + json.name + "</h1></div><br><div class='center'><p>"+json.description+"</p></div><br>"
 	var questionsLength = json.questions.length;
 	cuestionary +="<div class='questions-container'><ol>";
 	for(i = 0;i < questionsLength;i++){

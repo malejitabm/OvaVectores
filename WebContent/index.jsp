@@ -6,6 +6,7 @@
 <link rel="icon" type="image/ico" href="img/vectores-logo.ico">
 <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700"
 	rel="stylesheet">
+<link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -38,6 +39,9 @@
 						Sesión</button>
 				</div>
 			</form>
+		</div>
+		<div id="message" class="animated fadeIn alert ">
+			<p id="alertMessage" class="alert-message center"> Este es un mensaje</p>
 		</div>
 		<div class="como-container navy-background">
 			<p class="how-text">¿Cómo funciona?</p>
@@ -148,5 +152,7 @@
 			<br> &copy; 2016
 		</p>
 	</footer>
+	<script src="js/validator.js"></script>
+	
 </body>
 </html>

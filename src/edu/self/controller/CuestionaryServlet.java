@@ -60,8 +60,11 @@ public class CuestionaryServlet extends HttpServlet {
 			obj.put("questions", questionList);
 			json.append(obj);
 		}
-		//System.out.println(json.toString());
+		
 		pr.write(json.toString());
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 }
