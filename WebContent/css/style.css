@@ -209,6 +209,12 @@ html, body {
 .login-element{
     margin-bottom:20px;
 }
+.questions-container{
+	padding-left:20px;
+}
+.radio-option{
+	margin:10px;
+}
 .filler{
     display:inline-block;
     width:200px;
@@ -293,7 +299,7 @@ html, body {
 .content-title{
 	color:#58ACFA;
 	font-size:24px;
-	font-weight:medium;
+	font-weight:lighter;
 }
 .login{
     width:400px;

@@ -176,7 +176,7 @@
 }</code>
 		</pre>
 		-->
-		<p class="home-text">Cuestionario en construcción</p>
+		
 		
 		
 		</div>

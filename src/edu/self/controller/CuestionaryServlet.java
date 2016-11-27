@@ -60,7 +60,7 @@ public class CuestionaryServlet extends HttpServlet {
 			obj.put("questions", questionList);
 			json.append(obj);
 		}
-		System.out.println(json.toString());
+		//System.out.println(json.toString());
 		pr.write(json.toString());
 	}
 

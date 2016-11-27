@@ -86,7 +86,24 @@ function retrieveCuestionary(subtopic){
 
 function enableCuestionary(json){
 	var json = JSON.parse(json.responseText);
-	console.log(json.questions.length);
+	var i,j;
+	
+	var cuestionary = "<form action='' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Cuestionario: " + json.name + "</h1></div><br><div class='center'><p>"+json.description+"</p></div><br>"
+	var questionsLength = json.questions.length;
+	cuestionary +="<div class='questions-container'><ol>";
+	for(i = 0;i < questionsLength;i++){
+		cuestionary += "<li><h3>"+json.questions[i].description+"</h3>";
+		var optionsLength = json.questions[i].options.length;
+		for(j = 0;j<optionsLength;j++){
+			cuestionary +="<div class='radio-option'><input type='radio' name="+json.questions[i].options[j].question+" value="+json.questions[i].options[j].id+"> "+json.questions[i].options[j].description+"</input></div>";
+		}
+		cuestionary += "</li>";
+		
+	}
+	cuestionary +="</ol></div><div class='center'><button class='login-button' style='margin-bottom:30px;' type='submit' value='Enviar'>Enviar</button></div></form>";
+	document.getElementById('questions').innerHTML = "";
+	document.getElementById('questions').innerHTML = cuestionary;
+	
 }
 
 enableHomeContent();
