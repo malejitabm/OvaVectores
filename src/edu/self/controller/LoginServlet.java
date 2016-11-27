@@ -27,6 +27,11 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("home.jsp");
 			return;
 		}else{
+			/*
+			response.setContentType("text/html");
+		    request.setAttribute("access", false);
+		    request.getRequestDispatcher("/index.jsp").forward(request, response);
+		    */
 			response.sendRedirect("index.jsp");
 			return;
 		}

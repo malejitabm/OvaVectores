@@ -185,9 +185,14 @@
 			<p class="home-text">Perfil del usuario en construcción</p>
 		</div>
 		
+		<div id="message" class="animated fadeIn alert ">
+			<p class="alert-message center"> Este es un mensaje</p>
+		</div>
+		
 	</div>
 	
 	<script src="js/view-controller.js"></script>
+	<script src="js/validator.js"></script>
 	<script src="js/highlight.pack.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 </body>
