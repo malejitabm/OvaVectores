@@ -61,4 +61,25 @@ public class DAOCuestionary {
 		Connection.closeConnection();
 		return count;
 	}
+	
+	public boolean verifyAnswer(int option,int question){
+		int count = 0;
+		try{
+			ps = Connection.getConnection().prepareStatement("select * from Respuesta where opcion = ? and pregunta = ?");
+			ps.setInt(1, option);
+			ps.setInt(2, question);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				count++;
+			}
+			if(count > 0){
+				Connection.closeConnection();
+				return true;
+			}
+		}catch(SQLException e){
+			System.err.println("Can't execute the search query: "+e);
+		}
+		Connection.closeConnection();
+		return false;
+	}
 }

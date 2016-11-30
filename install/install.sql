@@ -29,8 +29,8 @@ create table Cuestionario(
 create table UsuarioCuestionario(
     usuario varchar(7) not null,
     cuestionario int not null,
-    calificacion decimal(3,2) not null,
-    fechaHora date not null,
+    aprobado boolean not null,
+    fechaHora datetime not null,
     primary key(usuario,cuestionario,fechaHora),
     foreign key(usuario) references Usuario(id),
     foreign key(cuestionario) references Cuestionario(id)

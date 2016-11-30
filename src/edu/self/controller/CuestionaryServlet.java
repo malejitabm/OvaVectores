@@ -14,9 +14,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import edu.self.model.DAOCuestionary;
+import edu.self.model.DAOUserCuestionary;
 import edu.self.model.DTOCuestionary;
 import edu.self.model.DTOOption;
 import edu.self.model.DTOQuestion;
+import edu.self.model.DTOUser;
 
 /**
  * Servlet implementation class CuestionaryServlet
@@ -65,15 +67,31 @@ public class CuestionaryServlet extends HttpServlet {
 		pr.write(json.toString());
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int count = 0;
 		DAOCuestionary dao = new DAOCuestionary();
 		int questionsCount = dao.getQuestions(Integer.parseInt(request.getParameter("cuestionary")));
 		Map<String,String[]> requestMap = request.getParameterMap();
 		if((requestMap.size()-1) < questionsCount){
-			System.out.print("Falta por llenar preguntas del cuestionario!!!");
+			//Enviar respuesta
 		}else{
 			for(Map.Entry<String, String[]> entry : requestMap.entrySet()){
-				System.out.println("Map Key: "+entry.getKey() + " - Value size: "+entry.getValue()[0]);
+				//Option : entry.getValue()[0]
+				//Question : entry.getKey()
+				if(!entry.getKey().equals("cuestionary")){
+					if(dao.verifyAnswer(Integer.parseInt(entry.getValue()[0]),Integer.parseInt(entry.getKey()))){
+						count++;
+					}
+				}
+			}
+			DAOUserCuestionary daouc = new DAOUserCuestionary();
+			DTOUser user = (DTOUser) request.getSession().getAttribute("user");
+			if(count >= questionsCount){
+				daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), true);
+				System.out.println("Aprobado");
+				
+			}else{
+				daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), false);
+				System.out.println("No Aprobado");
 			}
 		}
 	}
