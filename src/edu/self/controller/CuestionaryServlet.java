@@ -72,7 +72,7 @@ public class CuestionaryServlet extends HttpServlet {
 		int questionsCount = dao.getQuestions(Integer.parseInt(request.getParameter("cuestionary")));
 		Map<String,String[]> requestMap = request.getParameterMap();
 		if((requestMap.size()-1) < questionsCount){
-			//Enviar respuesta
+			//Enviar aviso
 		}else{
 			for(Map.Entry<String, String[]> entry : requestMap.entrySet()){
 				//Option : entry.getValue()[0]
@@ -87,11 +87,9 @@ public class CuestionaryServlet extends HttpServlet {
 			DTOUser user = (DTOUser) request.getSession().getAttribute("user");
 			if(count >= questionsCount){
 				daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), true);
-				System.out.println("Aprobado");
 				
 			}else{
 				daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), false);
-				System.out.println("No Aprobado");
 			}
 		}
 	}
