@@ -45,4 +45,20 @@ public class DAOCuestionary {
 		Connection.closeConnection();
 		return survey;
 	}
+	
+	public int getQuestions(int cuestionary){
+		int count = 0;
+		try{
+			ps = Connection.getConnection().prepareStatement("select count(*) from Pregunta where cuestionario = ?");
+			ps.setInt(1, cuestionary);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				count = rs.getInt("count(*)");
+			}
+		}catch(SQLException e){
+			System.err.println("Can't execute the search query: "+e);
+		}
+		Connection.closeConnection();
+		return count;
+	}
 }

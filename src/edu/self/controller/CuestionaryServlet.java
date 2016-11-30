@@ -2,6 +2,7 @@ package edu.self.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -65,6 +66,16 @@ public class CuestionaryServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		DAOCuestionary dao = new DAOCuestionary();
+		int questionsCount = dao.getQuestions(Integer.parseInt(request.getParameter("cuestionary")));
+		Map<String,String[]> requestMap = request.getParameterMap();
+		if((requestMap.size()-1) < questionsCount){
+			System.out.print("Falta por llenar preguntas del cuestionario!!!");
+		}else{
+			for(Map.Entry<String, String[]> entry : requestMap.entrySet()){
+				System.out.println("Map Key: "+entry.getKey() + " - Value size: "+entry.getValue()[0]);
+			}
+		}
 	}
 
 }

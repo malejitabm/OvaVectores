@@ -91,6 +91,7 @@ function enableCuestionary(json){
 	
 	var cuestionary = "<form action='cuestionary' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Cuestionario: " + json.name + "</h1></div><br><div class='center'><p>"+json.description+"</p></div><br>"
 	var questionsLength = json.questions.length;
+	cuestionary +="<input type='hidden' name='cuestionary' value="+json.id+"></input>"
 	cuestionary +="<div class='questions-container'><ol>";
 	for(i = 0;i < questionsLength;i++){
 		cuestionary += "<li><h3>"+json.questions[i].description+"</h3>";
