@@ -78,6 +78,9 @@
 				</ul></li>
 			<li><a id="repo" class="item" onclick="return enableContent(2);"
 				href="">Repositorio</a></li>
+				
+			<li><a class="item" onclick="return enableContent(7);" href="">Ejercicios Resueltos</a></li>
+			
 			<li><a class="item" onclick="return enableContent(3);" href="">Evaluación
 					final</a></li>
 					
@@ -167,24 +170,186 @@
 		<div id="theory" class="hidden-content">
 			<!--  Here is going to render the video content of the platform -->
 		</div>
-		
+
 		<div id="questions" class="hidden-content">
-		<!--
-			<pre>
-<code class="java">public static void main(String[] args){
-	System.out.println("Hello World using Highlight.js!!!");
-}</code>
-		</pre>
-		-->
-		
-		
-		
+			<!-- Here is going to show the questions with their respective options -->
 		</div>
 
 		<div id="profile" class="hidden-content">
 			<p class="home-text">Perfil del usuario en construcción</p>
 		</div>
-		
+		<div id="algorithms" class="hidden-content">
+			<br> <br> <br>
+			<h1 class="content-title center">Ejercicios Resueltos</h1>
+			<br>
+			<p class="justify">
+				En los siguientes ejercicios resueltos le ayudaran a leer y 
+				comprender código, tenga en cuenta que la lógica de cada
+				estudiante es diferente, intente entenderlos y crear su propio
+				código.</p>
+				<br>
+			<ol class="repo-list">
+				<li class="repo-item">
+					<p>Dado un vector de tamaño n, decir sí la suma de sus elementos es prima.</p>
+					<pre>
+						<code class="java">public String primero(int[] n){
+	int suma = 0; // Crear una variable llamada "suma" de tipo de datos entero(int).
+	for(int i = 0;i <= n.length - 1;i++){//usar el "for" para recorrer el vector "n"
+		//sumar los valores de cada posición del vector
+		suma += n[i];
+	}
+	//preguntar si la suma obtenida es prima
+	if(suma % 2 != 0){
+		//si es cierto, el método finaliza dando el siguiente mensaje.
+		return "Es prima";
+	}
+	//si no es cierto, el método finaliza dando el siguiente mensaje.
+	return "No es prima";
+}
+						</code>
+					</pre>
+				</li>
+				<li class="repo-item">
+					<p>Dado una matriz y un entero, contar cuantas veces está el número en la matriz,</p>
+					<pre>
+						<code class="java">public String segundo(int[][] n,int entero){
+	int contador = 0;//Se crea una variable llamada "contador" para llevar las veces
+	//Se utiliza el for para recorrer la matriz en sus filas
+	for(int i = 0;i <= n.length - 1;i++){
+		//Se utiliza el for para recorrer la matriz en sus columnas segun la fila en donde se encuentra
+		for(int j = 0;i <= n[i].length - 1;j++){
+			//Verificar si esta el numero
+			if(n[i][j] == entero){
+				//Si esta el numero, se aumenta el contador
+				contador++;
+			}
+		}
+	}
+	return "El numero esta: "+contador+" veces en la matriz";
+}
+						</code>
+					</pre>
+				</li>
+				<li class="repo-item">
+					<p>Crear un método que sume las filas impares de una matriz N x M.</p>
+					<pre>
+						<code class="java">public String tercero(int[][] n){
+	int suma = 0;// Crear una variable llamada "suma" de tipo de dato entero
+	//Recorrer la matriz con el for
+	for(int i = 0;i <= n.length - 1;i++){
+		//Solo entra en las filas impares utilizando %
+		if(i % 2 != 0){
+			for(int j = 0;j <= n[i].length - 1;j++){
+				//Suma los valores de las posiciones en la variable suma
+				suma += n[i][j];
+			}
+		}
+	}
+	return "La suma es: "+suma;
+}
+						</code>
+					</pre>
+				</li>
+				<li class="repo-item">
+					<p>Dado un vector de tipo entero, sacar el promedio de este.</p>
+					<pre>
+						<code class="java">public String cuarto(int[] n){
+	int suma = 0;
+	//Pasa por cada posicion del vector
+	for(int i = 0;i <= n.length-1;i++){
+		//Suma sus elementos
+		suma += n[i];
+	}
+	//Crea una variable "promedio" y se aplica la formula
+	double promedio = suma / n.length;
+	//El metodo termina con el promedio que da
+	return "El promedio es: "+ promedio;
+}
+						</code>
+					</pre>
+				</li>
+				<li class="repo-item">
+					<p>Dado un número buscar en una matriz todos los menores a él.</p>
+					<pre>
+						<code class="java">public String quinto(int numero,int[][] n){
+	String cadena = "Numeros: ";//Se crea una variable de tipo cadena de caracteres
+	//Recorre la matriz por sus filas
+	for(int i = 0;i <= n.length - 1;i++){
+		//Recorre la matriz por sus columnas
+		for(int j = 0;j <= n[i].length - 1;j++){
+			//Pregunta por el elemento y compara con el numero
+			if(n[i][j] < numero){
+				//Concatena todos los numeros menores a este
+				cadena += n[i][j] + ", ";
+			}
+		}
+	}
+	return cadena;
+}
+						</code>
+					</pre>
+				</li>
+				<li class="repo-item">
+					<p>Dado un número, decir si el promedio de un vector es mayor a este</p>
+					<pre>
+						<code class="java">public String sexto(int[] n,int entero){
+	int suma = 0;//Se crea una variable de tipo entero para acumular los valores
+	//Recorrer y sumar los valores del vector
+	for(int i = 0;i <= n.length - 1;i++){
+		suma += n[i];
+	}
+	//Se realiza la formula del promedio
+	int promedio = suma/n.length;
+	//Se compara si es mayor
+	if(entero > promedio){
+		return "El número es mayor que el promedio del vector";
+	}
+	return "El número es menor que el promedio del vector";
+}
+						</code>
+					</pre>
+				</li>
+				<li class="repo-item">
+					<p>Crea un arreglo o array multidimensional que contiene 3 columnas y las filas que tu quieras,
+						 las dos primeras columnas tendrán números y en la tercera columna será el resultado de sumar
+						 el número de la primera y segunda columna.</p>
+					<pre>
+						<code class="java">public int[][] septimo(int numeroFilas,ArrayList<Integer> a){
+	//Se crea otra matriz donde se van a realizar las operaciones
+	int[][] n= new int[numeroFilas][3];
+	int y = 0;//Se crea una variable de tipo entero para utilizar
+	for(int i = 0;i <= n.length - 1;i++){
+		for(int j = 0;j <= n[0].length - 1;j++){
+			if(j == 2){
+				n[i][j] = n[i][j-1]+n[i][j-2];
+			}else{
+				n[i][j] = a.get(y);
+				y++;
+			}
+		}
+	}
+	return n;
+}
+						</code>
+					</pre>
+				</li>
+				<li class="repo-item">
+					<p>Dada dos matrices, realizar su multiplicación y dar una tercera resultante.</p>
+					<pre>
+						<code class="java">public int[][] octavo(int[][] n,int[][] m){
+	int[][] result = new int[n.length][n[0].length];
+	for(int i = 0;i <= n.length - 1;i++){
+		for(int j = 0;j <= n[i].length - 1;j++){
+			result[i][j] = n[i][j] * m[i][j];
+		}
+	}
+	return result;
+}
+						</code>
+					</pre>
+				</li>
+			</ol>
+		</div>
 		<div id="message" class="animated fadeIn alert ">
 			<p class="alert-message center"> Este es un mensaje</p>
 		</div>
