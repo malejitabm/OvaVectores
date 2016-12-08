@@ -1,3 +1,22 @@
+// Fisher–Yates shuffle
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 
 function enableContent(number){
 	disableVideoContent()
@@ -95,9 +114,10 @@ function enableCuestionary(json){
 	cuestionary +="<div class='questions-container'><ol>";
 	for(i = 0;i < questionsLength;i++){
 		cuestionary += "<li><h3>"+json.questions[i].description+"</h3>";
-		var optionsLength = json.questions[i].options.length;
+		var sortOptions = shuffle(json.questions[i].options);
+		var optionsLength = sortOptions.length;
 		for(j = 0;j<optionsLength;j++){
-			cuestionary +="<div class='radio-option'><input type='radio' name="+json.questions[i].options[j].question+" value="+json.questions[i].options[j].id+"> "+json.questions[i].options[j].description+"</input></div>";
+			cuestionary +="<div class='radio-option'><input type='radio' name="+sortOptions[j].question+" value="+sortOptions[j].id+"> "+sortOptions[j].description+"</input></div>";
 		}
 		cuestionary += "</li>";
 		
