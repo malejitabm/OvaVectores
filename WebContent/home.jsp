@@ -81,7 +81,7 @@
 				
 			<li><a class="item" onclick="return enableContent(7);" href="">Ejercicios Resueltos</a></li>
 			
-			<li><a class="item" onclick="return enableContent(3);" href="">Evaluación
+			<li><a class="item" onclick="return retrieveFinal();" href="">Evaluación
 					final</a></li>
 					
 			<li><a class="item" href="removeSession.jsp">Salir<img width="16px"
@@ -158,7 +158,7 @@
 				<li class="repo-item">
 					<p>Se tiene una lista de N nombres de alumnos. Escribir un
 						algoritmo que solicite el nombre de un alumno, busque en la lista
-						(array) si el nombre está en la lista.</p>
+						(array) si el nombre está en la lista.</p><br>
 				</li>
 			</ol>
 		</div>
@@ -356,7 +356,7 @@
 		
 	</div>
 	
-	<script src="js/view-controller.js"></script>
+	<script src="js/view-controller.js" charset="UTF-8"></script>
 	<script src="js/validator.js"></script>
 	<script src="js/highlight.pack.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>

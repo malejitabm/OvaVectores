@@ -71,6 +71,48 @@ function retrieveVideoContent(videoId){
 	return false;
 }
 
+function retrieveFinal(){
+	var xhttp;
+	if(window.XMLHttpRequest){
+		xhttp = new XMLHttpRequest();;
+	}else{
+		//Code for IE5, IE6
+		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			enableContent(3);
+			sendFinal(this);
+		}
+	};
+	
+	xhttp.open("GET","final",true);
+	xhttp.send();
+	return false;
+}
+
+function sendFinal(json){
+	var json = JSON.parse(json.responseText);
+	var i,j;
+	
+	var final = "<form action='' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Evaluación Final</h1></div><br>";
+	var questionsLength = json.questions.length;
+	final +="<div class='questions-container'><ol>";
+	for(i = 0;i < questionsLength;i++){
+		final += "<li><h3>"+json.questions[i].description+"</h3>";
+		var sortOptions = shuffle(json.questions[i].options);
+		var optionsLength = sortOptions.length;
+		for(j = 0;j<optionsLength;j++){
+			final +="<div class='radio-option'><input type='radio' name="+sortOptions[j].question+" value="+sortOptions[j].id+"> "+sortOptions[j].description+"</input></div>";
+		}
+		final += "</li>";
+		
+	}
+	final +="</ol></div><div class='center'><button class='login-button' style='margin-bottom:30px;' type='submit' value='Enviar'>Enviar</button></div></form>";
+	document.getElementById('final-exam').innerHTML = "";
+	document.getElementById('final-exam').innerHTML = final;
+}
+
 function sendVideoSource(json){
 	var json = JSON.parse(json.responseText);
 	var video = "";
