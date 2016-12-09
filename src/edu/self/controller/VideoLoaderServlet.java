@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 /**
  * Servlet implementation class VideoLoaderServlet
  */
@@ -21,21 +23,28 @@ public class VideoLoaderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter pr = response.getWriter();
-		response.setContentType("text/plain");
+		response.setContentType("text/json");
 		response.setCharacterEncoding("UTF-8");
-		String filename;
+		StringBuilder json = new StringBuilder();
+		JSONObject obj = new JSONObject();
 		if(Integer.parseInt(request.getParameter("videoId")) == 1){
-			filename = "video/Inicializacion.mp4";
+			obj.put("title", "Inicialización");
+			obj.put("filename", "video/Inicializacion.mp4");
 		}else if(Integer.parseInt(request.getParameter("videoId")) == 2){
-			filename = "video/Recorrido.mp4";
+			obj.put("title", "Recorrido");
+			obj.put("filename", "video/Recorrido.mp4");
 		}else if(Integer.parseInt(request.getParameter("videoId")) == 3){
-			filename = "video/Asignacion.mp4";
+			obj.put("title", "Asignación");
+			obj.put("filename", "video/Asignacion.mp4");
 		}else if(Integer.parseInt(request.getParameter("videoId")) == 4){
-			filename = "video/Busqueda.mp4";
+			obj.put("title", "Busqueda de Elementos");
+			obj.put("filename", "video/Busqueda.mp4");
 		}else{
-			filename = "video/Ordenamiento.mp4";
+			obj.put("title", "Algoritmos de Ordenamiento");
+			obj.put("filename","video/Ordenamiento.mp4");
 		}
-		pr.write(filename);
+		json.append(obj);
+		pr.write(json.toString());
 	}
 
 	/**

@@ -19,7 +19,7 @@ function shuffle(array) {
 }
 
 function enableContent(number){
-	disableVideoContent()
+	disableVideoContent();
     var elements = document.getElementsByClassName('hidden-content');
     for(var i = 0;i<elements.length;i++){
         if(i == (number-1)){
@@ -71,11 +71,12 @@ function retrieveVideoContent(videoId){
 	return false;
 }
 
-function sendVideoSource(response){
-	var filename = response.responseText;
-	var video;
-	console.log(response.responseText);
-	video = "<video id='video-content' width='640px' height='480px' controls><source src="+"\""+filename+"\""+" type=\"video/mp4\"/></video>";
+function sendVideoSource(json){
+	var json = JSON.parse(json.responseText);
+	var video = "";
+	video += "<br><br><br>";
+	video += "<h1 class='content-title center'>"+json.title+"</h1>";
+	video += "<video id='video-content' width='640px' height='480px' controls><source src="+"\""+json.filename+"\""+" type=\"video/mp4\"/></video>";
 	disableVideoContent();
 	document.getElementById('theory').innerHTML = video;
 }
