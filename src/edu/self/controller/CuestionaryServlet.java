@@ -87,9 +87,10 @@ public class CuestionaryServlet extends HttpServlet {
 			DTOUser user = (DTOUser) request.getSession().getAttribute("user");
 			if(count >= questionsCount){
 				daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), true);
-				
+				//Enviar aviso
 			}else{
 				daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), false);
+				//Enviar aviso
 			}
 		}
 	}

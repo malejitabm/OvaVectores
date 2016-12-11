@@ -3,6 +3,7 @@ package edu.self.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +15,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import edu.self.model.DAOCuestionary;
+import edu.self.model.DAOFinalExam;
+import edu.self.model.DAOUserCuestionary;
+import edu.self.model.DAOUserFinalExam;
 import edu.self.model.DTOOption;
 import edu.self.model.DTOQuestion;
+import edu.self.model.DTOUser;
 
 /**
  * Servlet implementation class FinalExamServlet
@@ -29,7 +34,7 @@ public class FinalExamServlet extends HttpServlet {
 		response.setContentType("text/json");
 		response.setCharacterEncoding("UTF-8");
 		StringBuilder json = new StringBuilder();
-		DAOCuestionary dao = new DAOCuestionary();
+		DAOFinalExam dao = new DAOFinalExam();
 		ArrayList<DTOQuestion> questions = dao.searchFinalExam(1);
 		if(questions != null){
 			JSONObject obj = new JSONObject();
@@ -57,7 +62,32 @@ public class FinalExamServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int count = 0;
+		DAOFinalExam dao = new DAOFinalExam();
+		DAOCuestionary daoC = new DAOCuestionary();
+		int questionsCount = dao.searchFinalExam(1).size();
+		Map<String,String[]> requestMap = request.getParameterMap();
+		if(requestMap.size() < questionsCount){
+			//Enviar aviso
+		}else{
+			for(Map.Entry<String, String[]> entry : requestMap.entrySet()){
+				//Option : entry.getValue()[0]
+				//Question : entry.getKey()
+				if(daoC.verifyAnswer(Integer.parseInt(entry.getValue()[0]),Integer.parseInt(entry.getKey()))){
+					count++;
+				}
+			}
+			DAOUserFinalExam daouf = new DAOUserFinalExam();
+			DTOUser user = (DTOUser) request.getSession().getAttribute("user");
+			if(count >= questionsCount){
+				daouf.insert(user.getId(), 1, true);
+				//Enviar aviso
+			}else{
+				daouf.insert(user.getId(), 1, false);
+				//Enviar aviso
+			}
+			
+		}
 	}
 
 }

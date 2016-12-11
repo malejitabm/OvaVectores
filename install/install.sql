@@ -43,6 +43,16 @@ create table EvaluacionFinal(
     primary key(id)
 );
 
+create table UsuarioEvaluacion(
+    usuario varchar(7) not null,
+    evaluacion int not null,
+    aprobado boolean not null,
+    fechaHora datetime not null,
+    primary key(usuario,evaluacion,fechaHora),
+    foreign key(usuario) references Usuario(id),
+    foreign key(evaluacion) references EvaluacionFinal(id)
+);
+
 create table Pregunta(
     id int auto_increment,
     descripcion varchar(200) not null,

@@ -95,7 +95,7 @@ function sendFinal(json){
 	var json = JSON.parse(json.responseText);
 	var i,j;
 	
-	var final = "<form action='' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Evaluación Final</h1></div><br>";
+	var final = "<form action='final' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Evaluación Final</h1></div><br>";
 	var questionsLength = json.questions.length;
 	final +="<div class='questions-container'><ol>";
 	for(i = 0;i < questionsLength;i++){
