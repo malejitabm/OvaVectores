@@ -23,12 +23,12 @@
 		</header>
 		<div class="login cloud-background">
 			<h1 class="register-title">Bienvenido</h1>
-			<form action="login" method="post">
+			<form onsubmit="retrieveAccess()">
 				<div class="center asbestos-text">
-					<input class="register-field" type="text" placeholder="Código" name="id" />
+					<input id="username" class="register-field" type="text" placeholder="Código" name="id" />
 				</div>
 				<div class="center asbestos-text">
-					<input class="login-field" type="password" placeholder="Contraseña" name="password"/>
+					<input id="password" class="login-field" type="password" placeholder="Contraseña" name="password"/>
 				</div>
 				<div class="center register">
 					<a class="register-link" href="register.jsp">¿Aún no estas
@@ -40,8 +40,7 @@
 				</div>
 			</form>
 		</div>
-		<div id="message" class="animated fadeIn alert ">
-			<p id="alertMessage" class="alert-message center"> Este es un mensaje</p>
+		<div id="message">
 		</div>
 		<div class="como-container navy-background">
 			<p class="how-text">¿Cómo funciona?</p>
@@ -152,7 +151,7 @@
 			<br> &copy; 2016
 		</p>
 	</footer>
-	<script src="js/validator.js"></script>
-	
+
+	<script src="js/validator.js" charset="utf-8"></script>
 </body>
 </html>

@@ -44,6 +44,12 @@ html, body {
     width:200px;
     height:100px;
 }
+.toolbar{
+    position:relative;
+    margin:auto;
+    width:70%;
+    height:100px;
+}
 .item{
     font-size:12px;
     font-weight:normal;
@@ -80,6 +86,66 @@ html, body {
     margin-left:10px;
     cursor: pointer;
 }
+#checkbox {
+	position:absolute;
+	top:50%;
+	left:10%;
+	transform:translate(0,-50%);
+	background: url("../img/arrow.svg");
+	background-repeat: no-repeat;
+	background-position: right 10px top 15px;
+	background-size: 16px 16px;
+	cursor: pointer;
+	border: 0;
+	outline: 0;
+	padding-right: 45px;
+	padding-left: 15px;
+	border-radius: 3px;
+	font-weight: lighter;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	background-color: #3498DB;
+	width: auto;
+	height: 50px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-webkit-transition: 0.3s ease all;
+	-moz-transition: 0.3s ease all;
+	-ms-transition: 0.3s ease all;
+	-o-transition: 0.3s ease all;
+	transition: 0.3s ease all;
+}
+
+#checkbox:hover {
+	background-color: #2980B9;
+}
+
+#check-button{
+	position:absolute;
+	top:50%;
+	right:10%;
+	transform:translate(0,-50%);
+    border:none;
+    cursor: pointer;
+	width:200px;
+	height:50px;
+	color:white;
+	background-color:#1abc9c;
+    font-size:16px;
+    font-weight:lighter;
+    box-shadow: 0;
+    -webkit-transition: box-shadow 0.2s; /* Safari */
+    -webkit-transition-timing-function: linear; /* Safari */
+    transition: box-shadow 0.2s;
+    transition-timing-function: linear;
+}
+#check-button:hover{
+	-webkit-box-shadow: 0px 5px 10px -3px rgba(0,0,0,0.52);
+    -moz-box-shadow: 0px 5px 10px -3px rgba(0,0,0,0.52);
+    box-shadow: 0px 5px 10px -3px rgba(0,0,0,0.52);
+}
+
 .user-info{
     position:relative;
     width:100%;
@@ -87,7 +153,7 @@ html, body {
     border-top:2px solid #565761;
     border-bottom:2px solid #565761;
 }
-.user-info a img{
+.user-info img{
     position:absolute;
     top:50%;
     left:10px;
@@ -215,7 +281,6 @@ html, body {
 	color:white;
 }
 .alert{
-	display:none;
 	width:200px;
 	height:100px;
 	border-radius:5px;
@@ -223,7 +288,9 @@ html, body {
 	left:80%;
 	top:80%;
 	background-color:#3498db;
+	
 }
+
 .login-element{
     margin-bottom:20px;
 }

@@ -1,6 +1,8 @@
 package edu.self.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,22 +20,23 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
+		String id = request.getParameter("username");
 		String password = request.getParameter("password");
 		DAOUser dao = new DAOUser();
 		DTOUser user = dao.search(id, password);
+		PrintWriter pr = response.getWriter();
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
 		if(user != null){
 			request.getSession().setAttribute("user", user);
-			response.sendRedirect("home.jsp");
-			return;
+			if(user.getType() == 1){
+				pr.write("admin-home.jsp");
+			}else{
+				pr.write("home.jsp");
+			}
+			
 		}else{
-			/*
-			response.setContentType("text/html");
-		    request.setAttribute("access", false);
-		    request.getRequestDispatcher("/index.jsp").forward(request, response);
-		    */
-			response.sendRedirect("index.jsp");
-			return;
+			pr.write("n");
 		}
 	}
 

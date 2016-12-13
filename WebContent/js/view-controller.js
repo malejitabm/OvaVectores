@@ -94,8 +94,7 @@ function retrieveFinal(){
 function sendFinal(json){
 	var json = JSON.parse(json.responseText);
 	var i,j;
-	
-	var final = "<form action='final' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Evaluación Final</h1></div><br>";
+	var final = "<form onsubmit='verifyFinal()'><div class='center'><br> <br> <br><h1 class='content-title'>Evaluación Final</h1></div><br>";
 	var questionsLength = json.questions.length;
 	final +="<div class='questions-container'><ol>";
 	for(i = 0;i < questionsLength;i++){
@@ -103,7 +102,7 @@ function sendFinal(json){
 		var sortOptions = shuffle(json.questions[i].options);
 		var optionsLength = sortOptions.length;
 		for(j = 0;j<optionsLength;j++){
-			final +="<div class='radio-option'><input type='radio' name="+sortOptions[j].question+" value="+sortOptions[j].id+"> "+sortOptions[j].description+"</input></div>";
+			final +="<div class='radio-option'><input class='checkbox' type='radio' name="+sortOptions[j].question+" value="+sortOptions[j].id+"> "+sortOptions[j].description+"</input></div>";
 		}
 		final += "</li>";
 		
@@ -151,16 +150,16 @@ function enableCuestionary(json){
 	var json = JSON.parse(json.responseText);
 	var i,j;
 	
-	var cuestionary = "<form action='cuestionary' method='post'><div class='center'><br> <br> <br><h1 class='content-title'>Cuestionario: " + json.name + "</h1></div><br><div class='center'><p>"+json.description+"</p></div><br>"
+	var cuestionary = "<form onsubmit='verifyCuestionary()'><div class='center'><br> <br> <br><h1 class='content-title'>Cuestionario: " + json.name + "</h1></div><br><div class='center'><p>"+json.description+"</p></div><br>"
 	var questionsLength = json.questions.length;
-	cuestionary +="<input type='hidden' name='cuestionary' value="+json.id+"></input>"
+	cuestionary +="<input id='cuestionary' type='hidden' name='cuestionary' value="+json.id+"></input>"
 	cuestionary +="<div class='questions-container'><ol>";
 	for(i = 0;i < questionsLength;i++){
 		cuestionary += "<li><h3>"+json.questions[i].description+"</h3>";
 		var sortOptions = shuffle(json.questions[i].options);
 		var optionsLength = sortOptions.length;
 		for(j = 0;j<optionsLength;j++){
-			cuestionary +="<div class='radio-option'><input type='radio' name="+sortOptions[j].question+" value="+sortOptions[j].id+"> "+sortOptions[j].description+"</input></div>";
+			cuestionary +="<div class='radio-option'><input class='checkbox' type='radio' name="+sortOptions[j].question+" value="+sortOptions[j].id+"> "+sortOptions[j].description+"</input></div>";
 		}
 		cuestionary += "</li>";
 		
@@ -169,6 +168,105 @@ function enableCuestionary(json){
 	document.getElementById('questions').innerHTML = "";
 	document.getElementById('questions').innerHTML = cuestionary;
 	
+}
+
+function verifyCuestionary(){
+	event.preventDefault();
+	var xhttp;
+	if(window.XMLHttpRequest){
+		xhttp = new XMLHttpRequest();
+	}else{
+		//Code for IE5, IE6
+		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			showCuestionaryMessage(this);
+		}
+	};
+	var idCuestionary = document.getElementById("cuestionary").value;
+	var i;
+	var text = "{\"options\":[";
+	var options = document.getElementsByClassName("checkbox");
+	for(i = 0;i < options.length;i++){
+		if(options[i].checked){
+			text += "{\"option\":"+options[i].value+",\"question\":"+options[i].name+"},";
+		}
+	}
+	if(options.length > 0){
+		text = text.slice(0,-1);
+	}
+	text += "]}";
+	xhttp.open("POST","cuestionary?cuestionary="+idCuestionary+"&answers="+text,true);
+	xhttp.send();
+}
+function showCuestionaryMessage(response){
+	if(response.responseText == 'blank'){
+		loadAlertMessage("Faltan Preguntas por Responder","#e67e22");
+	}else if(response.responseText == 'incorrect'){
+		loadAlertMessage("Has Reprobado","#e74c3c");
+	}else{
+		loadAlertMessage("Has Aprobado","#2ecc71");
+	}
+}
+function verifyFinal(){
+	event.preventDefault();
+	var xhttp;
+	if(window.XMLHttpRequest){
+		xhttp = new XMLHttpRequest();
+	}else{
+		//Code for IE5, IE6
+		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			showCuestionaryMessage(this);
+		}
+	};
+	var i;
+	var text = "{\"options\":[";
+	var options = document.getElementsByClassName("checkbox");
+	for(i = 0;i < options.length;i++){
+		if(options[i].checked){
+			text += "{\"option\":"+options[i].value+",\"question\":"+options[i].name+"},";
+		}
+	}
+	if(options.length > 0){
+		text = text.slice(0,-1);
+	}
+	text += "]}";
+	xhttp.open("POST","final?answers="+text,true);
+	xhttp.send();
+}
+function retrieveUsers(){
+	var xhttp;
+	if(window.XMLHttpRequest){
+		xhttp = new XMLHttpRequest();
+	}else{
+		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			enableContent(3);
+			showUsers(this);
+		}
+	};
+	
+	xhttp.open("GET","user",true);
+	xhttp.send();
+	return false;
+}
+function showUsers(json){
+	var json = JSON.parse(json.responseText);
+	var i;
+	var container = "<br> <br> <br><h1 class='content-title center'>Consultar Estudiante</h1><br><div class='toolbar cloud-background'><select id='checkbox'>";
+	var usersLength = json.users.length;
+	for(i = 0;i < usersLength;i++){
+		container += "<option value="+json.users[i].id+">"+json.users[i].id+" - "+json.users[i].name+"</option>";
+	}
+	container += "</select><button id='check-button' type='submit' value='Consultar'>Consultar</button></div>";
+	document.getElementById('show-history').innerHTML = "";
+	document.getElementById('show-history').innerHTML = container;
 }
 
 enableHomeContent();

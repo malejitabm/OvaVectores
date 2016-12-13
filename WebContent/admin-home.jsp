@@ -1,7 +1,6 @@
 <%@ page import="edu.self.model.DTOUser" %>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="utf-8">
 <title>Vectores</title>
@@ -24,67 +23,27 @@
 		user = (DTOUser)session.getAttribute("user");
 	%>
 	<div class="nav-bar grey-background">
-
 		<div class="nav-bar-header">
 			<img class="header-img" width="103" height="60"
 				src="img/vectores-logo.png">
 		</div>
 		<div class="user-info">
 			<img width="64px"
-				height="64px" src="img/user.png">
+				height="73px" src="img/avatars/h13.png">
 			<p>
 				Bienvenido,<br><%=user.getName()%>
 			</p>
 		</div>
 		<ul>
-			<li><a class="item" href="" onclick="return enableHomeContent();">Inicio</a>
-			</li>
-			
-			<li><a class="item" href="" onclick="return enableSubItem(1);">Inicialización</a>
-				<ul class="hidden-menu">
-					<li><a class="subitem" href=""
-						onclick="return retrieveVideoContent(1);">Contenido Teórico</a></li>
-					<li><a class="subitem" href=""
-						onclick="return retrieveCuestionary(1);">Cuestionario</a></li>
-				</ul></li>
-			<li><a class="item" href="" onclick="return enableSubItem(2);">Recorrido</a>
-				<ul class="hidden-menu">
-					<li><a class="subitem" href=""
-						onclick="return retrieveVideoContent(2);">Contenido Teórico</a></li>
-					<li><a class="subitem" href=""
-						onclick="return retrieveCuestionary(3);">Cuestionario</a></li>
-				</ul></li>
-			<li><a class="item" href="" onclick="return enableSubItem(3);">Asignación</a>
-				<ul class="hidden-menu">
-					<li><a class="subitem" href=""
-						onclick="return retrieveVideoContent(3);">Contenido Teórico</a></li>
-					<li><a class="subitem" href=""
-						onclick="return retrieveCuestionary(2);">Cuestionario</a></li>
-				</ul></li>
-			<li><a class="item" href="" onclick="return enableSubItem(4);">Busqueda
-					de elementos</a>
-				<ul class="hidden-menu">
-					<li><a class="subitem" href=""
-						onclick="return retrieveVideoContent(4);">Contenido Teórico</a></li>
-					<li><a class="subitem" href=""
-						onclick="return retrieveCuestionary(4);">Cuestionario</a></li>
-				</ul></li>
-			<li><a class="item" href="" onclick="return enableSubItem(5);">Algoritmos
-					de ordenamiento</a>
-				<ul class="hidden-menu">
-					<li><a class="subitem" href=""
-						onclick="return retrieveVideoContent(5);">Contenido Teórico</a></li>
-					<li><a class="subitem" href=""
-						onclick="return retrieveCuestionary(5);">Cuestionario</a></li>
-				</ul></li>
-			<li><a id="repo" class="item" onclick="return enableContent(2);"
-				href="">Repositorio</a></li>
-				
-			<li><a class="item" onclick="return enableContent(7);" href="">Ejercicios Resueltos</a></li>
-			
-			<li><a class="item" onclick="return retrieveFinal();" href="">Evaluación
-					final</a></li>
-					
+			<li><a class="item" href="" onclick="return enableHomeContent();">Inicio</a></li>
+			<li><a class="item" href="" onclick="return retrieveVideoContent(1);">Inicialización</a></li>
+			<li><a class="item" href="" onclick="return retrieveVideoContent(2);">Recorrido</a></li>
+			<li><a class="item" href="" onclick="return retrieveVideoContent(3);">Asignación</a></li>
+			<li><a class="item" href="" onclick="return retrieveVideoContent(4);">Busqueda de elementos</a></li>
+			<li><a class="item" href="" onclick="return retrieveVideoContent(5);">Algoritmos de ordenamiento</a></li>
+			<li><a class="item" href="" onclick="return enableContent(6);">Ejercicios Resueltos</a></li>
+			<li><a class="item" href="" onclick="return enableContent(2);">Repositorio</a></li>
+			<li><a class="item" href="" onclick="return retrieveUsers();">Realizar Seguimiento</a></li>
 			<li><a class="item" href="removeSession.jsp">Salir<img width="16px"
 					height="16px" src="img/logout.png" /></a></li>
 		</ul>
@@ -105,7 +64,6 @@
 				
 			</div>
 		</div>
-
 		<div id="repository" class="hidden-content">
 			<br> <br> <br>
 			<h1 class="content-title center">Repositorio de Ejercicios</h1>
@@ -164,22 +122,15 @@
 				</li>
 			</ol>
 		</div>
-
-		<div id="final-exam" class="hidden-content">
-			<p class="home-text">Evaluación final en construcción</p>
+		<div id="show-history" class="hidden-content">
 		</div>
-
 		<div id="theory" class="hidden-content">
 			<!--  Here is going to render the video content of the platform -->
 		</div>
-
-		<div id="questions" class="hidden-content">
-			<!-- Here is going to show the questions with their respective options -->
-		</div>
-
 		<div id="profile" class="hidden-content">
 			<p class="home-text">Perfil del usuario en construcción</p>
 		</div>
+		
 		<div id="algorithms" class="hidden-content">
 			<br> <br> <br>
 			<h1 class="content-title center">Ejercicios Resueltos</h1>
@@ -352,15 +303,13 @@
 				</li>
 			</ol>
 		</div>
-		<div id="message">
-		</div>
+		
+		
 		
 	</div>
-	
 	<script src="js/view-controller.js" charset="UTF-8"></script>
 	<script src="js/validator.js" charset="UTF-8"></script>
 	<script src="js/highlight.pack.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 </body>
-
 </html>

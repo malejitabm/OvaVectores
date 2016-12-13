@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import edu.self.model.DAOCuestionary;
 import edu.self.model.DAOUserCuestionary;
@@ -70,29 +72,44 @@ public class CuestionaryServlet extends HttpServlet {
 		int count = 0;
 		DAOCuestionary dao = new DAOCuestionary();
 		int questionsCount = dao.getQuestions(Integer.parseInt(request.getParameter("cuestionary")));
-		Map<String,String[]> requestMap = request.getParameterMap();
-		if((requestMap.size()-1) < questionsCount){
-			//Enviar aviso
-		}else{
-			for(Map.Entry<String, String[]> entry : requestMap.entrySet()){
-				//Option : entry.getValue()[0]
-				//Question : entry.getKey()
-				if(!entry.getKey().equals("cuestionary")){
-					if(dao.verifyAnswer(Integer.parseInt(entry.getValue()[0]),Integer.parseInt(entry.getKey()))){
+		
+		PrintWriter pr = response.getWriter();
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		JSONParser parser = new JSONParser();
+		JSONObject obj = null;
+		try {
+			obj = (JSONObject) parser.parse(request.getParameter("answers"));
+		} catch (ParseException e) {
+			System.out.println("Can't parse the JSON String: "+e);
+		}
+		if(obj != null){
+			JSONArray  options = (JSONArray) obj.get("options");
+			if(options.size() < questionsCount){
+				//Enviar aviso
+				pr.write("blank");
+			}else{
+				for(int i = 0;i<options.size();i++){
+					JSONObject o = (JSONObject) options.get(i);
+					if(dao.verifyAnswer(Integer.parseInt(o.get("option").toString()),Integer.parseInt(o.get("question").toString()))){
 						count++;
 					}
 				}
+				DAOUserCuestionary daouc = new DAOUserCuestionary();
+				DTOUser user = (DTOUser) request.getSession().getAttribute("user");
+				if(count >= questionsCount){
+					daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), true);
+					//Enviar aviso
+					pr.write("correct");
+				}else{
+					daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), false);
+					//Enviar aviso
+					pr.write("incorrect");
+				}
 			}
-			DAOUserCuestionary daouc = new DAOUserCuestionary();
-			DTOUser user = (DTOUser) request.getSession().getAttribute("user");
-			if(count >= questionsCount){
-				daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), true);
-				//Enviar aviso
-			}else{
-				daouc.insert(user.getId(), Integer.parseInt(request.getParameter("cuestionary")), false);
-				//Enviar aviso
-			}
+			
 		}
+		
 	}
 
 }

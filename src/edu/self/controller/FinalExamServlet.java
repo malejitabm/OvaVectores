@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import edu.self.model.DAOCuestionary;
 import edu.self.model.DAOFinalExam;
@@ -66,27 +68,42 @@ public class FinalExamServlet extends HttpServlet {
 		DAOFinalExam dao = new DAOFinalExam();
 		DAOCuestionary daoC = new DAOCuestionary();
 		int questionsCount = dao.searchFinalExam(1).size();
-		Map<String,String[]> requestMap = request.getParameterMap();
-		if(requestMap.size() < questionsCount){
-			//Enviar aviso
-		}else{
-			for(Map.Entry<String, String[]> entry : requestMap.entrySet()){
-				//Option : entry.getValue()[0]
-				//Question : entry.getKey()
-				if(daoC.verifyAnswer(Integer.parseInt(entry.getValue()[0]),Integer.parseInt(entry.getKey()))){
-					count++;
+		PrintWriter pr = response.getWriter();
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		JSONParser parser = new JSONParser();
+		JSONObject obj = null;
+		System.out.println(request.getParameter("answers"));
+		try {
+			obj = (JSONObject) parser.parse(request.getParameter("answers"));
+			System.out.println(obj.toString());
+		} catch (ParseException e) {
+			System.out.println("Can't parse the JSON String: "+e);
+		}
+		if(obj != null){
+			JSONArray  options = (JSONArray) obj.get("options");
+			if(options.size() < questionsCount){
+				//Enviar aviso
+				pr.write("blank");
+			}else{
+				for(int i = 0;i<options.size();i++){
+					JSONObject o = (JSONObject) options.get(i);
+					if(daoC.verifyAnswer(Integer.parseInt(o.get("option").toString()),Integer.parseInt(o.get("question").toString()))){
+						count++;
+					}
+				}
+				DAOUserFinalExam daouf = new DAOUserFinalExam();
+				DTOUser user = (DTOUser) request.getSession().getAttribute("user");
+				if(count >= questionsCount){
+					daouf.insert(user.getId(), 1, true);
+					//Enviar aviso
+					pr.write("correct");
+				}else{
+					daouf.insert(user.getId(), 1, false);
+					//Enviar aviso
+					pr.write("incorrect");
 				}
 			}
-			DAOUserFinalExam daouf = new DAOUserFinalExam();
-			DTOUser user = (DTOUser) request.getSession().getAttribute("user");
-			if(count >= questionsCount){
-				daouf.insert(user.getId(), 1, true);
-				//Enviar aviso
-			}else{
-				daouf.insert(user.getId(), 1, false);
-				//Enviar aviso
-			}
-			
 		}
 	}
 

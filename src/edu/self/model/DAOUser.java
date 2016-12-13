@@ -1,5 +1,6 @@
 package edu.self.model;
 import java.sql.*;
+import java.util.ArrayList;
 
 import edu.self.util.Security;
 public class DAOUser {
@@ -40,5 +41,21 @@ public class DAOUser {
 		}
 		Connection.closeConnection();
 		return user;
+	}
+	
+	public ArrayList<DTOUser> searchUsers(int type){
+		ArrayList<DTOUser> users = new ArrayList<DTOUser>();
+		try{
+			ps = Connection.getConnection().prepareStatement("select * from Usuario where tipo = ?");
+			ps.setInt(1, type);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				users.add(new DTOUser(rs.getString("id"),rs.getString("nombre"),rs.getString("contrasena"),rs.getInt("tipo")));
+			}
+		}catch(SQLException e){
+			System.err.println("Can't execute the search query: "+e);
+		}
+		Connection.closeConnection();
+		return users;
 	}
 }
