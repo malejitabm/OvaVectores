@@ -29,19 +29,19 @@ public class VideoLoaderServlet extends HttpServlet {
 		JSONObject obj = new JSONObject();
 		if(Integer.parseInt(request.getParameter("videoId")) == 1){
 			obj.put("title", "Inicialización");
-			obj.put("filename", "video/Inicializacion.mp4");
+			obj.put("url", "https://www.youtube.com/embed/14J8DrGUYR0?controls=1");
 		}else if(Integer.parseInt(request.getParameter("videoId")) == 2){
 			obj.put("title", "Recorrido");
-			obj.put("filename", "video/Recorrido.mp4");
+			obj.put("url", "https://www.youtube.com/embed/UwB1qjBDMXU?controls=1");
 		}else if(Integer.parseInt(request.getParameter("videoId")) == 3){
 			obj.put("title", "Asignación");
-			obj.put("filename", "video/Asignacion.mp4");
+			obj.put("url", "https://www.youtube.com/embed/5hgk7J94XkM?controls=1");
 		}else if(Integer.parseInt(request.getParameter("videoId")) == 4){
 			obj.put("title", "Busqueda de Elementos");
-			obj.put("filename", "video/Busqueda.mp4");
+			obj.put("url", "https://www.youtube.com/embed/WKqu85T_D8Y?controls=1");
 		}else{
 			obj.put("title", "Algoritmos de Ordenamiento");
-			obj.put("filename","video/Ordenamiento.mp4");
+			obj.put("url","https://www.youtube.com/embed/rF-OUqm7z9c?controls=1");
 		}
 		json.append(obj);
 		pr.write(json.toString());
