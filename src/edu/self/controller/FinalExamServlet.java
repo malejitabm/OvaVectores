@@ -73,10 +73,8 @@ public class FinalExamServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		JSONParser parser = new JSONParser();
 		JSONObject obj = null;
-		System.out.println(request.getParameter("answers"));
 		try {
 			obj = (JSONObject) parser.parse(request.getParameter("answers"));
-			System.out.println(obj.toString());
 		} catch (ParseException e) {
 			System.out.println("Can't parse the JSON String: "+e);
 		}

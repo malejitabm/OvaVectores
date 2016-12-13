@@ -6,6 +6,7 @@
 <link rel="icon" type="image/ico" href="img/vectores-logo.ico">
 <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700"
 	rel="stylesheet">
+<link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,24 +17,25 @@
 		</header>
 		<div class="register-form cloud-background">
 			<h1 class="register-title">Regístrate</h1>
-			<form action="signup" method="post">
+			<form onsubmit="verifyRegisterInfo()">
 				<div class="center asbestos-text">
-					<input class="register-field" type="text" placeholder="Código" name="id"/>
+					<input id="codigo" class="register-field" type="text" placeholder="Código" name="id"/>
 				</div>
 				<div class="center asbestos-text">
-					<input class="register-field" type="text" placeholder="Nombre" name="name"/>
+					<input id="nombre" class="register-field" type="text" placeholder="Nombre" name="name"/>
 				</div>
 				<div class="center asbestos-text">
-					<input class="register-field" type="password" placeholder="Contraseña" name="password1"/>
+					<input id="pass1" class="register-field" type="password" placeholder="Contraseña" name="password1"/>
 				</div>
 				<div class="center password asbestos-text">
-					<input class="register-field" type="password" placeholder="Confirmar Contraseña" name="password2"/>
+					<input id="pass2" class="register-field" type="password" placeholder="Confirmar Contraseña" name="password2"/>
 				</div>
 				<div class="center">
 					<button class="login-button" type="submit" value="Registrar">Registrar</button>
 				</div>
 			</form>
 		</div>
+		<div id="message"></div>
 	</div>
 	<footer class="footer grey-background">
 		<p
@@ -43,5 +45,6 @@
 			<br> &copy; 2016
 		</p>
 	</footer>
+	<script src="js/validator.js" charset="utf-8"></script>
 </body>
 </html>

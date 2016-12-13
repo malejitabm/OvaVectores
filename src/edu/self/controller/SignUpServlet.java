@@ -1,6 +1,8 @@
 package edu.self.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,20 +22,25 @@ public class SignUpServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter pr = response.getWriter();
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
 		DAOUser dao = new DAOUser();
-		if(validateFields(request.getParameter("id"),request.getParameter("name"),request.getParameter("password1"),request.getParameter("password2")) && validatePassword(request.getParameter("password1"),request.getParameter("password2"))){
-			DTOUser user = new DTOUser(request.getParameter("id"),request.getParameter("name"),request.getParameter("password1"),2);
-			if(dao.insert(user)){
-				request.getSession().setAttribute("user", user);
-				response.sendRedirect("home.jsp");
-				return;
+		
+		if(validateFields(request.getParameter("id"),request.getParameter("name"),request.getParameter("pass1"),request.getParameter("pass2"))){
+			if(validatePassword(request.getParameter("pass1"),request.getParameter("pass2"))){
+				DTOUser user = new DTOUser(request.getParameter("id"),request.getParameter("name"),request.getParameter("pass1"),2);
+				if(dao.insert(user)){
+					request.getSession().setAttribute("user", user);
+					pr.write("home.jsp");
+				}else{
+					pr.write("incorrect");
+				}
 			}else{
-				response.sendRedirect("register.jsp");
-				return;
+				pr.write("incorrect");
 			}
 		}else{
-			response.sendRedirect("register.jsp");
-			return;
+			pr.write("blank");
 		}
 		
 	}

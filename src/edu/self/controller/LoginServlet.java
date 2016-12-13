@@ -23,21 +23,29 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("username");
 		String password = request.getParameter("password");
 		DAOUser dao = new DAOUser();
-		DTOUser user = dao.search(id, password);
+		
 		PrintWriter pr = response.getWriter();
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
-		if(user != null){
-			request.getSession().setAttribute("user", user);
-			if(user.getType() == 1){
-				pr.write("admin-home.jsp");
+		if(validateFields(id,password)){
+			DTOUser user = dao.search(id, password);
+			if(user != null){
+				request.getSession().setAttribute("user", user);
+				if(user.getType() == 1){
+					pr.write("admin-home.jsp");
+				}else{
+					pr.write("home.jsp");
+				}
 			}else{
-				pr.write("home.jsp");
+				pr.write("n");
 			}
-			
 		}else{
-			pr.write("n");
+			pr.write("blank");
 		}
+		
+	}
+	private boolean validateFields(String username,String password){
+		return (!username.equals("") && !password.equals(""));
 	}
 
 }

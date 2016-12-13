@@ -28,7 +28,39 @@ function retrieveAccess(){
 function sendAccess(response){
 	
 	if(response.responseText == 'n'){
-		loadAlertMessage('Datos Invalidos','#e74c3c');
+		loadAlertMessage('Datos Incorrectos','#e74c3c');
+	}else if(response.responseText == 'blank'){
+		loadAlertMessage('Faltan Datos por Llenar','#e74c3c');
+	}else{
+		window.location.href = response.responseText;
+	}
+}
+function verifyRegisterInfo(){
+	event.preventDefault();
+	var xhttp;
+	if(window.XMLHttpRequest){
+		xhttp = new XMLHttpRequest();
+	}else{
+		//Code for IE5, IE6
+		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			sendRegisterInfo(this);
+		}
+	};
+	var codigo = document.getElementById("codigo").value;
+	var nombre = document.getElementById("nombre").value;
+	var pass1 = document.getElementById("pass1").value;
+	var pass2 = document.getElementById("pass2").value;
+	xhttp.open("POST","signup?id="+codigo+"&name="+nombre+"&pass1="+pass1+"&pass2="+pass2,true);
+	xhttp.send();
+}
+function sendRegisterInfo(response){
+	if(response.responseText == 'blank'){
+		loadAlertMessage('Faltan Datos por Llenar','#e74c3c');
+	}else if(response.responseText == 'incorrect'){
+		loadAlertMessage('Datos Incorrectos','#e74c3c');
 	}else{
 		window.location.href = response.responseText;
 	}

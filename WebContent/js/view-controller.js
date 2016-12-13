@@ -48,8 +48,7 @@ function enableSubItem(number){
 
 function enableHomeContent(){
 	enableContent(1);
-	//<iframe width='470' height='402' src=\"http://edpuzzle.com/embed/media/582a8f7774b4fef43e81229f\" frameborder='0' allowfullscreen></iframe>
-	document.getElementById('home-video-content').innerHTML = "<iframe width=\"640\" height=\"480\" src=\"https://www.youtube.com/embed/_lelYbs47pw?controls=1\" frameborder='0' allowfullscreen></iframe>";
+	document.getElementById('home-video-content').innerHTML = "<iframe width='470' height='402' src=\"http://edpuzzle.com/embed/media/582a8f7774b4fef43e81229f\" frameborder='0' allowfullscreen></iframe>";
 	return false;
 }
 
@@ -113,24 +112,14 @@ function sendFinal(json){
 	document.getElementById('final-exam').innerHTML = "";
 	document.getElementById('final-exam').innerHTML = final;
 }
-/*
-function sendVideoSource(json){
-	var json = JSON.parse(json.responseText);
-	var video = "";
-	video += "<br><br><br>";
-	video += "<h1 class='content-title center'>"+json.title+"</h1>";
-	video += "<video id='video-content' width='640px' height='480px' controls><source src="+"\""+json.filename+"\""+" type=\"video/mp4\"/></video>";
-	disableVideoContent();
-	document.getElementById('theory').innerHTML = video;
-}
-*/
+
 function sendVideoSource(json){
 	var json = JSON.parse(json.responseText);
 	var video = "";
 	video += "<br><br><br>";
 	video += "<h1 class='content-title center'>"+json.title+"</h1>";
 	//<iframe width=\"420\" height=\"345\" src=\"https://www.youtube.com/embed/_lelYbs47pw?controls=1\"></iframe>
-	video += "<iframe id='video-content' width='640px' height='480px' src="+"\""+json.url+"\""+" frameborder='0' allowfullscreen></iframe>";
+	video += "<br><iframe id='video-content' width='640px' height='480px' src="+"\""+json.url+"\""+" frameborder='0' allowfullscreen></iframe>";
 	disableVideoContent();
 	document.getElementById('theory').innerHTML = video;
 }
@@ -199,14 +188,16 @@ function verifyCuestionary(){
 	};
 	var idCuestionary = document.getElementById("cuestionary").value;
 	var i;
+	var count = 0;
 	var text = "{\"options\":[";
 	var options = document.getElementsByClassName("checkbox");
 	for(i = 0;i < options.length;i++){
 		if(options[i].checked){
+			count++;
 			text += "{\"option\":"+options[i].value+",\"question\":"+options[i].name+"},";
 		}
 	}
-	if(options.length > 0){
+	if(count > 0){
 		text = text.slice(0,-1);
 	}
 	text += "]}";
@@ -237,14 +228,16 @@ function verifyFinal(){
 		}
 	};
 	var i;
+	var count = 0;
 	var text = "{\"options\":[";
 	var options = document.getElementsByClassName("checkbox");
 	for(i = 0;i < options.length;i++){
 		if(options[i].checked){
+			count++;
 			text += "{\"option\":"+options[i].value+",\"question\":"+options[i].name+"},";
 		}
 	}
-	if(options.length > 0){
+	if(count > 0){
 		text = text.slice(0,-1);
 	}
 	text += "]}";
